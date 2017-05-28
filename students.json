@@ -1,10 +1,10 @@
 {
-  "students" : [
-  {
-    "id": 1,
-    "firstname": "Cendrine",
-    "lastname": "Buisson",
-    "age": "22"
-  }
+  "students": [
+    {
+      "first_name": "Julien",
+      "name": "Rabin",
+      "age": "26",
+      "id": 1
+    }
   ]
 }

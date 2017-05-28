@@ -10,9 +10,12 @@
 </script>
 
 <template lang="pug">
-  div
-    | {{student.firstname}}
-    button(@click="remove") Supprimer
+  tr
+    td {{student.name}}
+    td {{student.first_name}}
+    td {{student.age}}
+    td
+      a.button.is-danger.is-small(@click="remove") Supprimer
 </template>
 
 <style>
