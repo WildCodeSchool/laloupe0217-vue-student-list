@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       students: [],
-      showModal: false,
+      showAddModal: false,
     };
   },
   methods: {
@@ -23,15 +23,15 @@ export default {
         this.students = res.data;
       });
     },
+    update(student, index) {
+      this.$set(this.students, index, student);
+    },
     remove(index) {
-      axios.delete(`http://localhost:3000/students/${this.students[index].id}`)
-      .then(() => {
-        this.students.splice(index, 1);
-      });
+      this.students.splice(index, 1);
     },
     addStudent(student) {
       this.students.push(student);
-      this.showModal = false;
+      this.showAddModal = false;
     },
   },
   mounted() {
@@ -44,11 +44,11 @@ export default {
   .container
     h1.title Student List
     .block.has-text-right
-      a.button.is-primary(@click="showModal = true") Ajouter
+      a.button.is-primary(@click="showAddModal = true") Ajouter
     modal(
         title="Add new Student",
-        :is-visible="showModal",
-        @close="showModal = false"
+        :is-visible="showAddModal",
+        @close="showAddModal = false"
       )
       student-creator(@add="addStudent")
     table.table
@@ -61,7 +61,9 @@ export default {
       tbody
         student-line(
           v-for='(student, index) in students',
+          :index="index",
           :student="student",
+          @update="update",
           @remove="remove(index)"
         )
 </template>

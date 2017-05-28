@@ -52,7 +52,8 @@
           placeholder="Student age",
           v-model="student.age"
         )
-    input.button.is-primary(type="submit")
+    .field.has-text-right
+      input.button.is-primary(type="submit")
 </template>
 
 <style>
